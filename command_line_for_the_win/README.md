@@ -1,5 +1,5 @@
 # Command line for the win
-11;rgb:0000/0000/0000
+
 This repository contains screenshots as sumbmission to the completion of the CMD challenge.
 All the images were uploaded to ALX's sandbox using sftp. The steps to adding the images to the repository included:
 
