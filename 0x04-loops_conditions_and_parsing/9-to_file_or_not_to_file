@@ -6,14 +6,12 @@ filename="./school"
 if [ ! -e $filename ]
 then
     echo "school file does not exist"
-elif [ -e $filename ]
-then
+else
     echo "school file exists"
     if [ ! -s $filename ]
     then
 	echo "school file is empty"
-    elif [ -s $filename ]
-    then
+    else
 	echo "school file is not empty"
     fi
     if [ -f $filename ]
