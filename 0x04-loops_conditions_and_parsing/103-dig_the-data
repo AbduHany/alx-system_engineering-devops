@@ -3,4 +3,4 @@
 # occurrences sorted from lowest to highest number of occurences.
 
 filename="apache-access.log"
-awk '{print $1, $9}' $filename | sort | uniq -c | sort
+awk '{print $1, $9}' $filename | sort | uniq -c | sort -r
