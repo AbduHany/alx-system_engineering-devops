@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# this bash script parses the Apache log file and counts the number of
+# occurrences sorted from lowest to highest number of occurences.
+
+filename="apache-access.log"
+awk '{print $1, $9}' $filename | sort | uniq -c | sort
