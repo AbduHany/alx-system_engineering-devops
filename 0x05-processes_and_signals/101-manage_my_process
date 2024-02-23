@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # this bash (init) script manages the "manage_my_process" script.
 
-if [ $# -eq 0 ]
+if [ "$#" -ne 1 ]
 then
     echo "Usage: manage_my_process {start|stop|restart}"
 elif [ "$1" == "start" ]
