@@ -1,5 +1,10 @@
 # This manifest installs flask from pip3.
-package { 'Flaskinstaller':
+package { 'Werkzeug':
+  ensure   => '2.1.1',
+  provider => 'pip3',
+  name     => 'Werkzeug',
+}
+package { 'Flask':
   ensure   => '2.1.0',
   provider => 'pip3',
   name     => 'flask',
