@@ -2,4 +2,4 @@
 # and uses the path ~/.ssh/school as identity file
 Host *
      IdentityFile ~/.ssh/school
-#     BatchMode yes
+     PasswordAuthentication yes
