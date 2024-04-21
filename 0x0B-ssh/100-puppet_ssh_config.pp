@@ -1,7 +1,9 @@
 # This puppet script make changes to the local
 # ssh client configuration file.
 file { "ssh_config":
+  ensure => 'present',
   path => "/etc/ssh/ssh_config",
-  ensure => "present"
-  content => ..."Host *\n\tIdentityFile ~/.ssh/school\n\tBatchMode yes"...,
+  content => "Host *
+  IdentityFile ~/.ssh/school
+  BatchMode yes",
 }
