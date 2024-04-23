@@ -4,3 +4,4 @@
 # when queried with a GET request.
 sudo apt-get -y install nginx
 echo "Hello World!" > /var/www/html/index.html
+sudo service nginx start
