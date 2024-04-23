@@ -2,6 +2,7 @@
 # This script installs NGINX on the machine and
 # and makes it return the string "Hello World!"
 # when queried with a GET request.
+sudo apt update
 sudo apt-get -y install nginx
-sudo echo "Hello World!" > /var/www/html/index.html
+echo "Hello World!" > /var/www/html/index.html
 sudo service nginx restart
