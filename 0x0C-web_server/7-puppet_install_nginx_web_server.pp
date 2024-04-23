@@ -3,8 +3,7 @@
 # redirect to ALXafrica's website when accesssing the
 # /redirect_me webpage.
 exec { 'update_apt':
-  command  => 'sudo apt update',
-  provider => 'bash',
+  command  => '/usr/bin/sudo /usr/bin/apt update',
 }
 package { 'nginx_installer':
   name     => 'nginx',
@@ -17,7 +16,7 @@ file { 'index_file_creator':
 }
 file { 'config_file':
   path    => '/etc/nginx/sites-available/default',
-  content => "server {
+  content => 'server {
     listen 80 default_server;
     listen [::]:80 default_server;
     root /var/www/html;
@@ -28,9 +27,8 @@ file { 'config_file':
     location / {
         try_files ${uri} ${uri}/ =404;
     }
-}",
+}',
 }
 exec { 'restart_nginx':
-  command  => 'sudo service nginx restart',
-  provider => 'bash',
+  command  => '/usr/bin/sudo /usr/sbin/service nginx restart',
 }
