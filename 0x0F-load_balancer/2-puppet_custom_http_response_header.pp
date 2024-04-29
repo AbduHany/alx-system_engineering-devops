@@ -10,9 +10,9 @@ package { 'nginx_installer':
   provider => 'apt',
 }
 exec { 'addheader':
-  command => 'sed -i \
-"s#root /var/www/html;#root /var/www/html;\n\n\tadd_header X-Served-By $hostname;\n#" \
-/etc/nginx/sites-available/default',
+  command => "sed -i \
+'s#root /var/www/html;#root /var/www/html;\n\n\tadd_header X-Served-By $HOSTNAME;\n#' \
+/etc/nginx/sites-available/default",
   provider => shell,
 }
 exec { 'restart_nginx':
