@@ -8,7 +8,6 @@ sudo add-apt-repository ppa:vbernat/haproxy-2.9 -y
 sudo apt-get install haproxy=2.9.\* -y
 echo -e "\nfrontend http
 \tbind *:80
-\tmode http
 \tdefault_backend web-backend
 
 
