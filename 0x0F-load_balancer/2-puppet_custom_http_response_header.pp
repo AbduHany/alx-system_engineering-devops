@@ -11,7 +11,7 @@ package { 'nginx_installer':
 # $text = 'root /var/www/html;\n\n\tadd_header X-Served-By $hostname;\n'
 exec { 'add_header':
   command => '/usr/bin/sudo /usr/bin/sed -i "s#root /var/www/html;#root \
-/var/www/html;\n\n\tadd_header X-Served-By $hostname;\n#" \
+/var/www/html;\n\n\tadd_header X-Served-By \$hostname;\n#" \
 /etc/nginx/sites-available/default'
 }
 exec { 'restart_nginx':
