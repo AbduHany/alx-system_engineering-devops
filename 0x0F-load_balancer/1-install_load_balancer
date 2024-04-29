@@ -15,5 +15,5 @@ echo -e "\nfrontend http
 backend web-backend
 \tbalance roundrobin
 \tserver web1 54.157.148.186:80 check
-\tserver web2 54.158.189.0:80 check\n" >> /etc/haproxy/haproxy.cfg
+\tserver web2 54.158.189.0:80 check\n" | sudo tee -a /etc/haproxy/haproxy.cfg > /dev/null
 sudo service haproxy restart
