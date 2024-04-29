@@ -8,11 +8,26 @@ package { 'nginx_installer':
   name     => 'nginx',
   provider => 'apt',
 }
-# $text = 'root /var/www/html;\n\n\tadd_header X-Served-By $hostname;\n'
-exec { 'add_header':
-  command => '/usr/bin/sudo /usr/bin/sed -i "s#root /var/www/html;#root \
-/var/www/html;\n\n\tadd_header X-Served-By \$hostname;\n#" \
-/etc/nginx/sites-available/default'
+file { 'index_file_creator':
+  ensure  => 'file',
+  path    => '/var/www/html/index.html',
+  content => 'Hello World!',
+}
+file { 'config_file':
+  path    => '/etc/nginx/sites-available/default',
+  content => 'server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    root /var/www/html;
+    add_header X-Served-By $hostname;
+    server_name _;
+    location /redirect_me {
+        return 301 https://www.alxafrica.com/;
+    }
+    location / {
+        try_files ${uri} ${uri}/ =404;
+    }
+}',
 }
 exec { 'restart_nginx':
   command  => '/usr/bin/sudo /usr/sbin/service nginx restart',
