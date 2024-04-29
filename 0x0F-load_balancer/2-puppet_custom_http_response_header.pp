@@ -19,13 +19,13 @@ file { 'config_file':
     listen 80 default_server;
     listen [::]:80 default_server;
     root /var/www/html;
-    add_header X-Served-By $hostname;
+    add_header X-Served-By \\$hostname;
     server_name _;
     location /redirect_me {
         return 301 https://www.alxafrica.com/;
     }
     location / {
-        try_files ${uri} ${uri}/ =404;
+        try_files \\${uri} \\${uri}/ =404;
     }
 }',
 }
