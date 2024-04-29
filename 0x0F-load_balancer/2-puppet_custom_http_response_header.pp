@@ -4,7 +4,7 @@
 exec { 'setup':
   command  => 'sudo apt update;
   sudo apt-get install -y nginx;
-  sudo sed -i "/root /var/www/html;/a add_header X-Served-By $HOSTNAME;\n" /etc/nginx/sites-available/default;
+  sudo sed -i "/root \/var\/www\/html;/a add_header X-Served-By $HOSTNAME;\n" /etc/nginx/sites-available/default;
   sudo service nginx restart',
   provider => shell,
 }
