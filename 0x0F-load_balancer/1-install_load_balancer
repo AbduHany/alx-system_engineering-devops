@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# This script configures a brand new Ubuntu machine to install
+# HAProxy and configures it to load balance to 2 servers using the
+# roundrobin algorithm.
+sudo apt update
+sudo apt-get install --no-install-recommends software-properties-common -y
+sudo add-apt-repository ppa:vbernat/haproxy-2.9 -y
+sudo apt-get install haproxy=2.9.\* -y
+echo -e "\nfrontend http
+\tbind *:80
+\tmode http
+\tdefault_backend web-backend
+
+
+backend web-backend
+\tbalance roundrobin
+\tserver web1 54.157.148.186:80 check
+\tserver web2 54.158.189.0:80 check\n" >> /etc/haproxy/haproxy.cfg
+sudo service haproxy restart
