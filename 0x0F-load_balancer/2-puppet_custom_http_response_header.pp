@@ -8,18 +8,10 @@ package { 'nginx_installer':
   name     => 'nginx',
   provider => 'apt',
 }
-file { 'config_file':
-  path    => '/etc/nginx/sites-available/default',
-  content => 'server {
-    listen 80 default_server;
-    listen [::]:80 default_server;
-    root /var/www/html;
-    add_header X-Served-By $HOSTNAME;
-    server_name _;
-    location / {
-        try_files ${uri} ${uri}/ =404;
-    }
-}',
+exec { 'addheader':
+  command => '/usr/bin/sudo /usr/bin/sed -i \
+"s#root /var/www/html;#root /var/www/html;\n\n\tadd_header X-Served-By $hostname;\n#" \
+/etc/nginx/sites-available/default'
 }
 exec { 'restart_nginx':
   command  => '/usr/bin/sudo /usr/sbin/service nginx restart',
