@@ -2,14 +2,14 @@
 # This script configures a server to be running NGINX and listening on port 80 of all the server's active IPV4 IPs.
 sudo apt-get update
 sudo apt-get install -y nginx
-echo 'server {
+echo "server {
      listen 80 default_server;
      listen [::]:80 default_server;
      root /var/www/html;
      index index.html index.htm index.nginx-debian.html;
      server_name _;
      location / {
-     	      try_files ${uri} ${uri}/ =404;
+     	      try_files \${uri} \${uri}/ =404;
      }
-}' | sudo tee /etc/nginx/sites-available/default
+}" | sudo tee /etc/nginx/sites-available/default
 sudo service nginx restart
