@@ -3,4 +3,4 @@
 # port 80 of all the server's active IPV4 IPs.
 sudo apt-get update
 sudo apt-get install -y nginx
-sudo nginx -s reload
+sudo nginx
