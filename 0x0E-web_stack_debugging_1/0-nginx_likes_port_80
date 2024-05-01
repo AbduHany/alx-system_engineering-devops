@@ -3,5 +3,5 @@
 # port 80 of all the server's active IPV4 IPs.
 sudo apt-get update
 sudo apt-get install -y nginx
-sudo sed "s/listen 80 default_server;/listen 80;/" -i /etc/nginx/sites-available/default
+sudo sed "s/listen [::]:80 default_server;//" -i /etc/nginx/sites-available/default
 sudo service nginx restart
