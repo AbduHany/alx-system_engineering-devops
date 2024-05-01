@@ -2,4 +2,4 @@
 # This script makes sure the nginx server is listening to port 80 without the service running.
 sudo rm /etc/nginx/sites-enables/default
 sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
-sudo nginx -g 'daemon off;'
+sudo nginx
