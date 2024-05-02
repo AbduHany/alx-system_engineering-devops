@@ -2,3 +2,4 @@
 # This script makes sure the nginx server is listening to port 80 without the service running.
 sudo ln -s -f /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
 sudo nginx
+sudo pkill nginx
