@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# This script accepts 2 arguments (domain and subdomain) and returns
+# the DNS records with the IP addresses they point to.
+print_DNS() {
+    if [ -z "$1" ]; then
+	echo "Please provide domain name"
+    elif [ -z "$2" ]; then
+	echo "The subdomain www is a A record and points to $(dig "www.$1" | grep -A1 'R SECTION:' | awk '{print $5}' | tail -1)"
+	echo "The subdomain lb-01 is a A record and points to $(dig "lb-01.$1" | grep -A1 'R SECTION:' | awk '{print $5}' | tail -1)"
+	echo "The subdomain web-01 is a A record and points to $(dig "web-01.$1" | grep -A1 'R SECTION:' | awk '{print $5}' | tail -1)"
+	echo "The subdomain web-02 is a A record and points to $(dig "web-02.$1" | grep -A1 'R SECTION:' | awk '{print $5}' | tail -1)"
+    else
+	echo "The subdomain $2 is a A record and points to $(dig "$2.$1" | grep -A1 'R SECTION:' | awk '{print $5}' | tail -1)"
+    fi
+}
+
+print_DNS "$1" "$2"
