@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# This script configures the container to fit the above requirements
+chmod ugo+xrw /etc/nginx/nginx.conf
+sudo -u nginx nginx
