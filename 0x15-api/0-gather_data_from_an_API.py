@@ -2,9 +2,9 @@
 """This script uses REST API for a given employee ID, returns
 information about his/her TODO list progress.
 """
-import urllib.request
 import json
 import sys
+import urllib.request
 
 
 if __name__ == "__main__":
@@ -21,9 +21,9 @@ if __name__ == "__main__":
         completed = 0
         tasks = ""
         for task in todo_all:
-            if (task.get('completed') == True):
+            if (task.get('completed') is True):
                 completed += 1
-                tasks += '\t'
+                tasks += '\t '
                 tasks += task.get('title', None)
                 tasks += "\n"
         print("Employee {} is done with tasks({}/{}):".format(
