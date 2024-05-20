@@ -9,7 +9,8 @@ import urllib.request
 
 if __name__ == "__main__":
     user_data = urllib.request.urlopen(
-        url='https://jsonplaceholder.typicode.com/users').read().decode('utf-8')
+        url='https://jsonplaceholder.typicode.com/users').read().decode(
+            'utf-8')
     user_data = json.loads(user_data)
     json_dict = {}
     for user in user_data:
