@@ -10,8 +10,9 @@ def top_ten(subreddit):
     """This function prints the titles of the
     first 10 hot posts listed for a given subreddit.
     """
-    url = 'https://www.reddit.com/r/{}/top.json'.format(subreddit)
+    url = 'https://www.reddit.com/r/{}/hot.json?count=10'.format(subreddit)
     req = urllib.request.Request(url)
+    req.redirect = False
     try:
         respone = urllib.request.urlopen(req)
     except Exception:
