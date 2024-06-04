@@ -2,9 +2,7 @@
 """This moduled defines function returns the number
 of subscribers for a given subreddit
 """
-import urllib.request
-import urllib.parse
-import json
+import requests
 
 
 def number_of_subscribers(subreddit):
@@ -12,12 +10,10 @@ def number_of_subscribers(subreddit):
     for a given subreddit.
     """
     url = 'https://www.reddit.com/r/{}/about.json'.format(subreddit)
-    req = urllib.request.Request(url)
-    req.redirect = False
-    try:
-        respone = urllib.request.urlopen(req)
-    except Exception:
+    headers = {"User-Agent": "Mozilla/5.0"}
+    res = requests.get(url, headers=headers, allow_redirects=False)
+    if (res.status_code == 302):
         return (0)
-    obj = json.loads((respone.read().decode('utf-8')))
-    subs = obj['data']['subscribers']
-    return(subs)
+    elif (res.status_code == 200):
+        obj = res.json()
+        return (obj['data']['subscribers'])
