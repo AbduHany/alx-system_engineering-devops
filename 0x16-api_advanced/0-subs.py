@@ -5,7 +5,6 @@ of subscribers for a given subreddit
 import urllib.request
 import urllib.parse
 import json
-import sys
 
 
 def number_of_subscribers(subreddit):
