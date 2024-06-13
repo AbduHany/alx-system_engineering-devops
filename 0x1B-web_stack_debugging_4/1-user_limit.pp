@@ -2,6 +2,6 @@
 file { 'change_holberton_limits':
   ensure  => file,
   path    => '/etc/security/limits.conf',
-  content => 'holberton hard nofile 15
-holberton soft nofile 15',
+  content => 'holberton hard nofile 5
+holberton soft nofile 4',
 }
