@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # This script gracefully reloads Gunicorn
 
-systemctl status gunicorn |  sed -n 's/.*Main PID: \(.*\)$/\1/g p' | cut -f1 -d' ' | xargs kill -HUP
+pgrep "gunicorn" | head -n1 | xargs kill -HUP
