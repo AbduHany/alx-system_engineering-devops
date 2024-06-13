@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# This script gracefully reloads Gunicorn
+
+master_id=$(ps -C gunicorn fch -o pid | head -n 1)
+kill -HUP "$master_id"
