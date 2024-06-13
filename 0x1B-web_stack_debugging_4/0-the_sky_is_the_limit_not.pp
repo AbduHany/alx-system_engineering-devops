@@ -2,7 +2,7 @@
 file { 'increasing_limits':
   ensure  => file,
   path    => '/etc/default/nginx',
-  content => 'ULIMIT="-n 200"',
+  content => 'ULIMIT="-n 2000"',
 }
 
 exec {'restart_nginx':
