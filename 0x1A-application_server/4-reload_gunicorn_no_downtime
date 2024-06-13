@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
 # This script gracefully reloads Gunicorn
 
-master_pid=$(systemctl show -p MainPID gunicorn | cut -d '=' -f 2)
-sudo kill -HUP "$master_pid"
+ps aux | grep gunicorn | awk '{ print $2 }' | xargs kill -HUP
