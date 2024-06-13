@@ -2,4 +2,4 @@
 # This script gracefully reloads Gunicorn
 
 master_pid=$(systemctl show -p MainPID gunicorn | cut -d '=' -f 2)
-sudo kill -HUP $master_pid
+sudo kill -HUP "$master_pid"
