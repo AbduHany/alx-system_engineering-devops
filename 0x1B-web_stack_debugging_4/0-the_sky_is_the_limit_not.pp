@@ -4,3 +4,8 @@ file { 'increasing_limits':
   path    => '/etc/default/nginx',
   content => 'ULIMIT="-n 200"',
 }
+
+exec {'restart_nginx':
+  command  => 'service nginx restart',
+  provider => 'shell',
+}
